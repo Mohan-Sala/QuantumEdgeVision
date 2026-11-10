@@ -192,7 +192,7 @@ else:
 st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# SEQUENTIAL PIPELINE DISPLAY (CONCLUSIONS ONLY)
+# SEQUENTIAL PIPELINE DISPLAY
 # -----------------------------------------------------------------------------
 if st.session_state.sim_executed and st.session_state.small_image is not None:
 
@@ -204,12 +204,6 @@ if st.session_state.sim_executed and st.session_state.small_image is not None:
         <div class="step-header">
             <span class="step-number-badge">STEP 1</span>
             <h3 class="step-title-text">Image Preprocessing & 8×8 Decimation</h3>
-        </div>
-        <div class="conclusion-box">
-            <div class="conclusion-title">🎯 Conclusion:</div>
-            <p class="conclusion-text">
-                The input image was converted to single-channel grayscale and decimated into an 8×8 pixel matrix (64 total pixels, dynamic range 0–255) using area-based interpolation (<code>cv2.INTER_AREA</code>), establishing the computational basis for quantum circuit statevector simulation.
-            </p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -256,12 +250,6 @@ if st.session_state.sim_executed and st.session_state.small_image is not None:
         <div class="step-header">
             <span class="step-number-badge">STEP 2</span>
             <h3 class="step-title-text">NEQR Quantum Image Encoding (14 Qubits)</h3>
-        </div>
-        <div class="conclusion-box">
-            <div class="conclusion-title">🎯 Conclusion:</div>
-            <p class="conclusion-text">
-                Synthesized a 14-qubit NEQR quantum circuit (3 position X qubits, 3 position Y qubits, 8 intensity qubits). All 64 computational basis states verified with 100% fidelity against the input image pixels; statevector normalization is strictly unitary (∑|c<sub>i</sub>|² = 1.000000).
-            </p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -314,12 +302,6 @@ if st.session_state.sim_executed and st.session_state.small_image is not None:
             <span class="step-number-badge">STEP 3</span>
             <h3 class="step-title-text">Reversible Quantum Arithmetic (18 Qubits)</h3>
         </div>
-        <div class="conclusion-box">
-            <div class="conclusion-title">🎯 Conclusion:</div>
-            <p class="conclusion-text">
-                Two's complement subtraction (A - B = A + (~B) + 1) was implemented reversibly using an 18-qubit <code>CDKMRippleCarryAdder</code>. Input Register A remained preserved throughout the unitary computation, verifying information reversibility and satisfying Landauer's theoretical zero-entropy dissipation limit.
-            </p>
-        </div>
     """, unsafe_allow_html=True)
 
     st.markdown("#### 🎛️ Interactive Quantum Subtraction Playground")
@@ -363,12 +345,6 @@ if st.session_state.sim_executed and st.session_state.small_image is not None:
         <div class="step-header">
             <span class="step-number-badge">STEP 4</span>
             <h3 class="step-title-text">Quantum-Assisted Edge Detection (Directional Gradients)</h3>
-        </div>
-        <div class="conclusion-box">
-            <div class="conclusion-title">🎯 Conclusion:</div>
-            <p class="conclusion-text">
-                Evaluated 72 simulated reversible quantum subtraction circuits across 36 interior pixels to obtain horizontal (G<sub>x</sub>) and vertical (G<sub>y</sub>) gradients. Combined gradient magnitude was normalized to 0–255 and successfully binarized into an active edge map.
-            </p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -414,17 +390,11 @@ if st.session_state.sim_executed and st.session_state.small_image is not None:
     # =========================================================================
     # STEP 5: BOUNDARY EXTRACTION (CONTOUR TOPOLOGY)
     # =========================================================================
-    st.markdown(f"""
+    st.markdown("""
     <div class="step-card">
         <div class="step-header">
             <span class="step-number-badge">STEP 5</span>
             <h3 class="step-title-text">Boundary Extraction (Contour Topology)</h3>
-        </div>
-        <div class="conclusion-box">
-            <div class="conclusion-title">🎯 Conclusion:</div>
-            <p class="conclusion-text">
-                Extracted <b>{len(st.session_state.quantum_contours)}</b> closed external object boundaries from the quantum-assisted binary edge map using topological contour tracing (<code>cv2.findContours</code>), rendered as green overlays on the original grayscale image.
-            </p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -458,17 +428,11 @@ if st.session_state.sim_executed and st.session_state.small_image is not None:
         threshold=new_threshold
     )
 
-    st.markdown(f"""
+    st.markdown("""
     <div class="step-card">
         <div class="step-header">
             <span class="step-number-badge">STEP 6</span>
             <h3 class="step-title-text">Classical Sobel vs Quantum-Assisted Comparison</h3>
-        </div>
-        <div class="conclusion-box">
-            <div class="conclusion-title">🎯 Conclusion:</div>
-            <p class="conclusion-text">
-                Quantum-assisted reversible edge detection achieves high structural concordance with classical Sobel (Jaccard IoU: <b>{comp['iou']:.4f}</b>, Dice Similarity: <b>{comp['dice_similarity']:.4f}</b>). The measured execution time reflects exact 2<sup>18</sup> complex amplitude CPU statevector simulation versus native compiled C++ SIMD routines.
-            </p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -508,12 +472,6 @@ if st.session_state.sim_executed and st.session_state.small_image is not None:
         <div class="step-header">
             <span class="step-number-badge">STEP 7</span>
             <h3 class="step-title-text">Circuit Complexity, Landauer Thermodynamics & Downloads</h3>
-        </div>
-        <div class="conclusion-box">
-            <div class="conclusion-title">🎯 Conclusion:</div>
-            <p class="conclusion-text">
-                By preserving unitary state transformations and eliminating destructive bit erasure, the quantum arithmetic framework achieves the theoretical Landauer zero-heat dissipation limit (0.00 J vs classical minimum of """ + f"{landauer['classical_thermodynamic_limit_joules']:.3e} J" + """).
-            </p>
         </div>
     """, unsafe_allow_html=True)
 

@@ -114,7 +114,7 @@ The application will automatically open in your default browser at `http://local
 The application features a single-page interface with no sidebar navigation:
 
 1. **User Image Upload:** Upload your image (PNG, JPG, or JPEG) and click **"Run Quantum Simulation & Generate Pipeline"**.
-2. **Sequential Top-to-Bottom Generation:** The entire pipeline executes and renders sequentially down the page. Each step includes a direct **`🎯 Conclusion`** stating the computed results:
+2. **Sequential Top-to-Bottom Generation:** The entire pipeline executes and renders cleanly down the page across 7 streamlined steps:
    - **Step 1: Image Preprocessing & 8×8 Decimation:** Converts to grayscale, decimates to an 8×8 pixel matrix with `INTER_AREA`, and displays an interactive Plotly heatmap with computational basis state annotations.
    - **Step 2: NEQR Quantum Image Encoding (14 Qubits):** Synthesizes the 14-qubit circuit, placing spatial registers into equal superposition via Hadamard gates and entangling 8 intensity qubits via multi-controlled X gates.
    - **Step 3: Reversible Quantum Arithmetic (18 Qubits):** Demonstrates two's complement subtraction ($A - B = A + (\sim B) + 1$) via `CDKMRippleCarryAdder`, preserving Register A and highlighting Landauer's theoretical zero-dissipation limit.
